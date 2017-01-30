@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "229031146500",
+    "firebase_url": "https://emoting-b4d9a.firebaseio.com",
+    "project_id": "emoting-b4d9a",
+    "storage_bucket": "emoting-b4d9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229031146500:android:f23f64a015028f8c",
+        "android_client_info": {
+          "package_name": "org.nativescript.emoting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229031146500-oaggk0r46he4df9rgrr6fu928i4k87l7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLDTLnTV_40gpUlgbvaB9q6ND_sUCE5ds"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,12 +1,30 @@
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { NativeScriptModule } from "nativescript-angular/platform";
+import { NgModule } from "@angular/core";
+import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptRouterModule } from "nativescript-angular/router";
 
+import { appRoutes } from "./app.routes";
 import { AppComponent } from "./app.component";
+import { FirebaseService } from "./services/firebase.service";
+import { UtilsService } from "./services/utils.service";
+
+import { HomeModule } from "./home/home.module";
 
 @NgModule({
-    declarations: [AppComponent],
-    bootstrap: [AppComponent],
-    imports: [NativeScriptModule],
-    schemas: [NO_ERRORS_SCHEMA]
+  providers: [
+    FirebaseService,
+    UtilsService
+  ],
+  imports: [
+    NativeScriptModule,
+    NativeScriptHttpModule,
+    NativeScriptRouterModule,
+    NativeScriptRouterModule.forRoot(appRoutes),
+    HomeModule
+  ],
+  declarations: [
+      AppComponent,
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
