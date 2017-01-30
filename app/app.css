@@ -7,8 +7,9 @@ Button {
     margin: 5;
 }
 .card {
-    background-color: purple;
+    background-color: limegreen;
     padding: 5;
+    margin: 5;
     border-radius: 2;
 }
 .btn {
