@@ -36,4 +36,17 @@ export class FirebaseService {
           console.log(errorMessage);
         });
    }
+
+   createPhoto(downloadPath:string) {
+     return firebase.push(
+        "/Photos",
+        { "path": downloadPath, "date": 0 - Date.now()}
+      ).then(
+        function (result:any) {
+          return 'Photo added!';
+        },
+        function (errorMessage:any) {
+          console.log(errorMessage);
+        }); 
+   }
 }

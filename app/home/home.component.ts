@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Page } from "ui/page";
 import { FirebaseService, UtilsService } from "../services";
-import * as camera from "nativescript-camera";
-import * as fs from "file-system";
 import * as enums from 'ui/enums';
 import * as imageSource from 'image-source';
 import { isAndroid } from "platform";
+import { View } from "ui/core/view";
+
+import * as camera from "nativescript-camera";
+import * as fs from "file-system";
+
+var imageModule = require("ui/image");
+var img;
 
 @Component({
     moduleId: module.id,
@@ -54,6 +59,20 @@ export class HomeComponent implements OnInit {
         let imgsrc = res;
         this.imagePath = this.utilsService.documentsPath(`photo-${Date.now()}.png`);
         imgsrc.saveToFile(this.imagePath, enums.ImageFormat.png);
+        //upload the file, then save all
+        this.firebaseService.uploadFile(this.imagePath).then((uploadedFile: any) => {
+          this.uploadedImageName = uploadedFile.name;
+          //get downloadURL and store it as a full path;
+          this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
+            this.firebaseService.createPhoto(downloadUrl).then((result:any) => {
+              alert(result)
+            }, (error: any) => {
+                alert(error);
+            });
+          })
+        }, (error: any) => {
+          alert('File upload error: ' + error);
+        });
     }
 
 
