@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
     private uploadedImageName: string;
     private uploadedImagePath: string;
 
+    public photos$: Observable<any>;
+
     constructor(
         private firebaseService: FirebaseService,
         private utilsService: UtilsService
@@ -34,6 +36,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
         camera.requestPermissions();
+        this.photos$ = <any>this.firebaseService.getPhotos();
     }
 
     takePhoto() {
@@ -61,18 +64,44 @@ export class HomeComponent implements OnInit {
         imgsrc.saveToFile(this.imagePath, enums.ImageFormat.png);
         //upload the file, then save all
         this.firebaseService.uploadFile(this.imagePath).then((uploadedFile: any) => {
-          this.uploadedImageName = uploadedFile.name;
-          //get downloadURL and store it as a full path;
-          this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
-            this.firebaseService.createPhoto(downloadUrl).then((result:any) => {
-              alert(result)
-            }, (error: any) => {
-                alert(error);
-            });
-          })
+            this.uploadedImageName = uploadedFile.name;
+            //get downloadURL and store it as a full path;
+            this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
+                this.firebaseService.createPhoto(downloadUrl).then((result: any) => {
+                    alert(result)
+                }, (error: any) => {
+                    alert(error);
+                });
+            })
         }, (error: any) => {
-          alert('File upload error: ' + error);
+            alert('File upload error: ' + error);
         });
+    }
+
+    vote1(id) {
+        this.firebaseService.vote1(id).then((result: any) => {
+            alert(result)
+        })
+    }
+    vote2(id) {
+        this.firebaseService.vote2(id).then((result: any) => {
+            alert(result)
+        })
+    }
+    vote3(id) {
+        this.firebaseService.vote3(id).then((result: any) => {
+            alert(result)
+        })
+    }
+    vote4(id) {
+        this.firebaseService.vote4(id).then((result: any) => {
+            alert(result)
+        })
+    }
+    vote5(id) {
+        this.firebaseService.vote5(id).then((result: any) => {
+            alert(result)
+        })
     }
 
 

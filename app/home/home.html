@@ -6,15 +6,15 @@
 
 <ScrollView>
     <StackLayout>
-        <StackLayout class="card">
-            <Image src="https://firebasestorage.googleapis.com/v0/b/emoting-b4d9a.appspot.com/o/270982_original.jpg?alt=media&token=51880276-e23a-4a0d-8252-d391053ae317"></Image>
-            <GridLayout orientation="horizontal" columns="*,*,*,*,*">
-                <Button class="btn btn1" col="0" text="💩"></Button>
-                <Button class="btn btn2" col="1" text="😍"></Button>
-                <Button class="btn btn3" col="2" text="😮"></Button>
-                <Button class="btn btn4" col="3" text="😂"></Button>
-                <Button class="btn btn5" col="4" text="😐"></Button>
-            </GridLayout> 
+        <StackLayout class="card" *ngFor="let photo of (photos$ | async)" >
+            <Image [src]="photo.path"></Image>
+            <GridLayout   orientation="horizontal" columns="*,*,*,*,*">
+                <Button (tap)="vote1(photo.id)" class="btn btn1" col="0" text="💩"></Button>
+                <Button (tap)="vote2(photo.id)" class="btn btn2" col="1" text="😍"></Button>
+                <Button (tap)="vote3(photo.id)" class="btn btn3" col="2" text="😮"></Button>
+                <Button (tap)="vote4(photo.id)" class="btn btn4" col="3" text="😂"></Button>
+                <Button (tap)="vote5(photo.id)" class="btn btn5" col="4" text="😐"></Button>
+            </GridLayout>
         </StackLayout>       
     </StackLayout>
 </ScrollView>
