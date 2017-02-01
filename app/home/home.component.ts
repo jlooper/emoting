@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Page } from "ui/page";
+import { Photo } from "../models/photo.model";
 import { FirebaseService, UtilsService } from "../services";
 import * as enums from 'ui/enums';
 import * as imageSource from 'image-source';
@@ -78,28 +79,28 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    vote1(id) {
-        this.firebaseService.vote1(id).then((result: any) => {
+    vote1(photo:Photo) {
+        this.firebaseService.vote1(photo.id).then((result: any) => {
             alert(result)
         })
     }
-    vote2(id) {
-        this.firebaseService.vote2(id).then((result: any) => {
+    vote2(photo:Photo) {
+        this.firebaseService.vote2(photo.id).then((result: any) => {
             alert(result)
         })
     }
-    vote3(id) {
-        this.firebaseService.vote3(id).then((result: any) => {
+    vote3(photo:Photo) {
+        this.firebaseService.vote3(photo.id).then((result: any) => {
             alert(result)
         })
     }
-    vote4(id) {
-        this.firebaseService.vote4(id).then((result: any) => {
+    vote4(photo:Photo) {
+        this.firebaseService.vote4(photo.id).then((result: any) => {
             alert(result)
         })
     }
-    vote5(id) {
-        this.firebaseService.vote5(id).then((result: any) => {
+    vote5(photo:Photo) {
+        this.firebaseService.vote5(photo.id).then((result: any) => {
             alert(result)
         })
     }

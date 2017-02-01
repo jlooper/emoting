@@ -8,7 +8,7 @@
     <StackLayout>
         <StackLayout class="card" *ngFor="let photo of (photos$ | async)" >
             <Image [src]="photo.path"></Image>
-            <GridLayout   orientation="horizontal" columns="*,*,*,*,*">
+            <GridLayout orientation="horizontal" columns="*,*,*,*,*">
                 <Button (tap)="vote1(photo.id)" class="btn btn1" col="0" text="💩"></Button>
                 <Button (tap)="vote2(photo.id)" class="btn btn2" col="1" text="😍"></Button>
                 <Button (tap)="vote3(photo.id)" class="btn btn3" col="2" text="😮"></Button>
