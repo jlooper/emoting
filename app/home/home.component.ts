@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
             //get downloadURL and store it as a full path;
             this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
                 this.firebaseService.createPhoto(downloadUrl).then((result: any) => {
-                    alert(result)
+                    alert("Voted!")
                 }, (error: any) => {
                     alert(error);
                 });
@@ -79,33 +79,10 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    vote1(photo:Photo) {
-        this.firebaseService.vote1(photo.id).then((result: any) => {
+    vote(emoji:number,photo:Photo) {
+        this.firebaseService.vote(emoji,photo).then((result: any) => {
             alert(result)
         })
     }
-    vote2(photo:Photo) {
-        this.firebaseService.vote2(photo.id).then((result: any) => {
-            alert(result)
-        })
-    }
-    vote3(photo:Photo) {
-        this.firebaseService.vote3(photo.id).then((result: any) => {
-            alert(result)
-        })
-    }
-    vote4(photo:Photo) {
-        this.firebaseService.vote4(photo.id).then((result: any) => {
-            alert(result)
-        })
-    }
-    vote5(photo:Photo) {
-        this.firebaseService.vote5(photo.id).then((result: any) => {
-            alert(result)
-        })
-    }
-
-
-
 }
 

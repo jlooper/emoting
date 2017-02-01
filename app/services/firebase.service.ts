@@ -56,75 +56,41 @@ export class FirebaseService {
       });
   }
 
-  vote1(id: string) {
+  vote(emoji:number,photo:Photo) {
+    //which emoji do we upate?
     this.publishUpdates();
-    return firebase.update("/Photos/" + id + "", {
-      emoji1: 1
+    
+    switch (emoji) 
+    { 
+    case 1: 
+    return firebase.update("/Photos/" + photo.id + "", {
+      emoji1: photo.emoji1+1
     })
-      .then(
+    case 2: 
+    return firebase.update("/Photos/" + photo.id + "", {
+      emoji2: photo.emoji2+1
+    })
+    case 3: 
+    return firebase.update("/Photos/" + photo.id + "", {
+      emoji3: photo.emoji3+1
+    }) 
+    case 4: 
+    return firebase.update("/Photos/" + photo.id + "", {
+      emoji4: photo.emoji4+1
+    }) 
+    case 5: 
+    return firebase.update("/Photos/" + photo.id + "", {
+      emoji5: photo.emoji5+1
+    })    
+     .then(
       function (result: any) {
-        return 'You have successfully voted!';
+        //return 'You have successfully voted!';
       },
       function (errorMessage: any) {
         console.log(errorMessage);
       });
   }
-  vote2(id: string) {
-    this.publishUpdates();
-    return firebase.update("/Photos/" + id + "", {
-      emoji2: 1
-    })
-      .then(
-      function (result: any) {
-        return 'You have successfully voted!';
-      },
-      function (errorMessage: any) {
-        console.log(errorMessage);
-      });
   }
-
-  vote3(id: string) {
-    this.publishUpdates();
-    return firebase.update("/Photos/" + id + "", {
-      emoji3: 1
-    })
-      .then(
-      function (result: any) {
-        return 'You have successfully voted!';
-      },
-      function (errorMessage: any) {
-        console.log(errorMessage);
-      });
-  }
-
-  vote4(id: string) {
-    this.publishUpdates();
-    return firebase.update("/Photos/" + id + "", {
-      emoji4: 1
-    })
-      .then(
-      function (result: any) {
-        return 'You have successfully voted!';
-      },
-      function (errorMessage: any) {
-        console.log(errorMessage);
-      });
-  }
-
-  vote5(id: string) {
-    this.publishUpdates();
-    return firebase.update("/Photos/" + id + "", {
-      emoji5: 1
-    })
-      .then(
-      function (result: any) {
-        return 'You have successfully voted!';
-      },
-      function (errorMessage: any) {
-        console.log(errorMessage);
-      });
-  }
-
   getPhotos(): Observable<any> {
     return new Observable((observer: any) => {
       let path = 'Photos';
