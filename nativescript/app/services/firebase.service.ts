@@ -84,12 +84,12 @@ export class FirebaseService {
     })    
      .then(
       function (result: any) {
-        //return 'You have successfully voted!';
+        //nothing is returned
       },
       function (errorMessage: any) {
         console.log(errorMessage);
       });
-  }
+   }
   }
   getPhotos(): Observable<any> {
     return new Observable((observer: any) => {
@@ -98,7 +98,6 @@ export class FirebaseService {
       let onValueEvent = (snapshot: any) => {
         this.ngZone.run(() => {
           let results = this.handleSnapshot(snapshot.value);
-          console.log(JSON.stringify(results))
           observer.next(results);
         });
       };

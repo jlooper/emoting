@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
             //get downloadURL and store it as a full path;
             this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
                 this.firebaseService.createPhoto(downloadUrl).then((result: any) => {
-                    alert("Voted!")
+                    alert(result)
                 }, (error: any) => {
                     alert(error);
                 });
@@ -81,7 +81,8 @@ export class HomeComponent implements OnInit {
 
     vote(emoji:number,photo:Photo) {
         this.firebaseService.vote(emoji,photo).then((result: any) => {
-            alert(result)
+           //currently, nothing is returned
+           alert("Voted!")
         })
     }
 }
