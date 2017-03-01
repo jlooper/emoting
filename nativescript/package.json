@@ -23,6 +23,7 @@
     "@angular/router": "3.4.3",
     "nativescript-angular": "1.4.0",
     "nativescript-plugin-firebase": "^3.10.1",
+    "nativescript-camera": "^0.0.8",
     "reflect-metadata": "~0.1.8",
     "rxjs": "~5.0.1",
     "tns-core-modules": "2.5.1",
