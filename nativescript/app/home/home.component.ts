@@ -8,6 +8,8 @@ import * as imageSource from 'image-source';
 import { isAndroid } from "platform";
 import { View } from "ui/core/view";
 
+//plugins
+import * as Toast from "nativescript-toast";
 import * as camera from "nativescript-camera";
 import * as fs from "file-system";
 
@@ -27,13 +29,15 @@ export class HomeComponent implements OnInit {
     private imagePath: string;
     private uploadedImageName: string;
     private uploadedImagePath: string;
+    private confettiView: any;
 
     public photos$: Observable<any>;
 
     constructor(
         private firebaseService: FirebaseService,
         private utilsService: UtilsService
-    ) { }
+    ) {
+     }
 
     ngOnInit() {
         camera.requestPermissions();
@@ -81,8 +85,7 @@ export class HomeComponent implements OnInit {
 
     vote(emoji:number,photo:Photo) {
         this.firebaseService.vote(emoji,photo).then((result: any) => {
-           //currently, nothing is returned
-           alert("Voted!")
+           Toast.makeText("Voted!").show();
         })
     }
 }
