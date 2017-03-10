@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
     private imagePath: string;
     private uploadedImageName: string;
     private uploadedImagePath: string;
-    private confettiView: any;
 
     public photos$: Observable<any>;
 
