@@ -7,6 +7,7 @@ import * as enums from 'ui/enums';
 import * as imageSource from 'image-source';
 import { isAndroid } from "platform";
 import { View } from "ui/core/view";
+import {TNSFancyAlert,TNSFancyAlertButton} from 'nativescript-fancyalert';
 
 //plugins
 import * as Toast from "nativescript-toast";
@@ -72,13 +73,13 @@ export class HomeComponent implements OnInit {
             //get downloadURL and store it as a full path;
             this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
                 this.firebaseService.createPhoto(downloadUrl).then((result: any) => {
-                    alert(result)
+                    TNSFancyAlert.showSuccess('Success!', result, 'OK!');    
                 }, (error: any) => {
-                    alert(error);
+                    TNSFancyAlert.showError('Oops!', error, 'OK!');    
                 });
             })
         }, (error: any) => {
-            alert('File upload error: ' + error);
+            TNSFancyAlert.showError('Oops!', error, 'OK!');
         });
     }
 
