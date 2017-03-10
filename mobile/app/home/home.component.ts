@@ -83,10 +83,9 @@ export class HomeComponent implements OnInit {
     }
 
     vote(emoji:number,photo:Photo) {
-        /*this.firebaseService.vote(emoji,photo).then((result: any) => {
+        this.firebaseService.vote(emoji,photo).then((result: any) => {
            Toast.makeText("Voted!").show();
-        })*/
-        this.firebaseService.vote(emoji,photo);
+        })
     }
     
 }
