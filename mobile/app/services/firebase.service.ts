@@ -46,7 +46,7 @@ export class FirebaseService {
   createPhoto(downloadPath: string) {
     return firebase.push(
       "/Photos",
-      { "path": downloadPath, "date": 0 - Date.now() }
+      { "path": downloadPath, "date": 0 - Date.now(), "emoji1":0, "emoji2":0, "emoji3":0, "emoji4":0, "emoji5":0}
     ).then(
       function (result: any) {
         return 'Photo added!';
@@ -59,8 +59,8 @@ export class FirebaseService {
   vote(emoji:number,photo:Photo) {
     //which emoji do we upate?
     this.publishUpdates();
-    
     switch (emoji) 
+    
     { 
     case 1: 
     return firebase.update("/Photos/" + photo.id + "", {
@@ -91,6 +91,7 @@ export class FirebaseService {
       });
    }
   }
+
   getPhotos(): Observable<any> {
     return new Observable((observer: any) => {
       let path = 'Photos';
