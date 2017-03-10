@@ -1,0 +1,5 @@
+mobile/app/**/*.js
+mobile/hooks
+mobile/lib
+mobile/node_modules
+mobile/platforms
