@@ -22,7 +22,7 @@ export class FirebaseService {
   loader = new LoadingIndicator();
   private _allPhotos: Array<Photo> = [];
 
-  uploadFile(localPath: string, file?: any): Promise<any> {
+  public uploadFile(localPath: string, file?: any): Promise<any> {
     this.loader.show({message:"Uploading..."});
     let filename = this.utils.getFilename(localPath);
     let remotePath = `${filename}`;
@@ -36,11 +36,7 @@ export class FirebaseService {
     });
   }
 
-  getDownloadUrl(remoteFilePath: string): Promise<any> {
-
-    this.loader.hide();
-        
-
+  public getDownloadUrl(remoteFilePath: string): Promise<any> {
     return firebase.getDownloadUrl({
       remoteFullPath: remoteFilePath
     })
