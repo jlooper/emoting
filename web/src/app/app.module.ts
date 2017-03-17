@@ -6,9 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
-import { EmotingCardComponent } from './emoting-card/emoting-card.component';
-import { ResultChartComponent } from './result-chart/result-chart.component';
-import { EmojiVotesComponent } from './emoji-votes/emoji-votes.component';
 
 export const firebaseConfig = {
    apiKey: "AIzaSyCVe0RQwBocNDOpUfDQfZf6Kh1E0-zcZxI",
@@ -20,10 +17,7 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    EmotingCardComponent,
-    ResultChartComponent,
-    EmojiVotesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
