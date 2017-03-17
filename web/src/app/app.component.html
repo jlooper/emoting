@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<ul>
+  <li class="text" *ngFor="let photo of photos | async">
+    {{ photo.date | date: 'dd MMM y' }}
+    <img src="{{ photo.path }}">
+    <div>
+      {{ photo.emoji1 }}
+      {{ photo.emoji2 }}
+      {{ photo.emoji3 }}
+      {{ photo.emoji4 }}
+      {{ photo.emoji5 }}
+    </div>
+  </li>
+</ul>
