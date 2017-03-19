@@ -1,14 +1,19 @@
-<ul>
-  <li class="text" *ngFor="let photo of photos | async">
-    {{ photo.date | date: 'dd MMM y' }}
-    <img src="{{ photo.path }}">
-    <div>
-      {{ photo.emoji1 }}
-      {{ photo.emoji2 }}
-      {{ photo.emoji3 }}
-      {{ photo.emoji4 }}
-      {{ photo.emoji5 }}
+<div class="container-fluid">
+  <div class="row">
+    <div class="card-deck">
+      <div *ngFor="let photo of photos | async">
+        <div class="card">
+          <img class ="photo" src="{{ photo.path }}" alt="Emoting Photo">
+          <div>
+            {{ photo.emoji1 }}
+            {{ photo.emoji2 }}
+            {{ photo.emoji3 }}
+            {{ photo.emoji4 }}
+            {{ photo.emoji5 }}
+          </div>
+        </div>
+      </div>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
 
