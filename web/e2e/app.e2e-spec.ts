@@ -1,6 +1,6 @@
 import { EmotingWebAppPage } from './app.po';
 
-describe('emoting-web-app App', function() {
+describe('emoting-web-app App', () => {
   let page: EmotingWebAppPage;
 
   beforeEach(() => {

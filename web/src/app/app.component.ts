@@ -12,3 +12,4 @@ export class AppComponent {
     this.photos = af.database.list('/Photos');
   }
 }
+
