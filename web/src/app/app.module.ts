@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { ChartModule } from '@progress/kendo-angular-charts';
 import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    ChartModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
