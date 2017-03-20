@@ -4,11 +4,11 @@
   <div *ngFor="let photo of photos | async" class="card">
     <img class ="photo" src="{{ photo.path }}" alt="Emoting Photo">
     <div class="chart-wrapper">
-      <kendo-chart>
-        <kendo-chart-legend position="top" orientation="horizontal"></kendo-chart-legend>
+      <kendo-chart style="height: 200px;">
         <kendo-chart-series>
           <kendo-chart-series-item
             type="column"
+            spacing="2"
             [data]="[
               photo.emoji1,
               photo.emoji2,
