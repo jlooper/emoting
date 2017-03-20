@@ -3,20 +3,23 @@
 <div class="container">
   <div *ngFor="let photo of photos | async" class="card">
     <img class ="photo" src="{{ photo.path }}" alt="Emoting Photo">
-    <kendo-chart>
-      <kendo-chart-series>
-        <kendo-chart-series-item
-          type="column"
-          [data]="[
-            photo.emoji1,
-            photo.emoji2,
-            photo.emoji3,
-            photo.emoji4,
-            photo.emoji5
-          ]" >
-        </kendo-chart-series-item>
-      </kendo-chart-series>
-    </kendo-chart>
+    <div class="chart-wrapper">
+      <kendo-chart>
+        <kendo-chart-legend position="top" orientation="horizontal"></kendo-chart-legend>
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="column"
+            [data]="[
+              photo.emoji1,
+              photo.emoji2,
+              photo.emoji3,
+              photo.emoji4,
+              photo.emoji5
+            ]" >
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
     <div class="emote-buttons">
       <button class="btn btn1 💩">💩</button>
       <button class="btn btn2 😍">😍</button>

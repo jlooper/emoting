@@ -57,6 +57,11 @@ h1 {
   width: 100%;
 }
 
+.chart-wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
 .emote-buttons {
   margin: 0 auto;
   display: flex;
