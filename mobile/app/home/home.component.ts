@@ -38,7 +38,10 @@ export class HomeComponent implements OnInit {
 
     public Sounds = {
         "1": sound.create("~/assets/1.wav"),
-        "3": sound.create("~/assets/3.wav")
+        "2": sound.create("~/assets/2.wav"),
+        "3": sound.create("~/assets/3.wav"),
+        "4": sound.create("~/assets/4.wav"),
+        "5": sound.create("~/assets/5.wav")
     };
 
     constructor(
