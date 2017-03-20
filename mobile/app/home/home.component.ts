@@ -14,7 +14,7 @@ import {TNSFancyAlert,TNSFancyAlertButton} from 'nativescript-fancyalert';
 import * as Toast from "nativescript-toast";
 import * as camera from "nativescript-camera";
 import * as fs from "file-system";
-//import * as sound from "nativescript-sound";
+var sound = require("nativescript-sound");
 
 var imageModule = require("ui/image");
 var img;
@@ -37,7 +37,8 @@ export class HomeComponent implements OnInit {
     public photos$: Observable<any>;
 
     public Sounds = {
-        //"fart": sound.create("~/assets/fart.wav")
+        "1": sound.create("~/assets/1.wav"),
+        "3": sound.create("~/assets/3.wav")
     };
 
     constructor(
@@ -93,10 +94,10 @@ export class HomeComponent implements OnInit {
     vote(emoji:number,photo:Photo) {
 
         if (app.android) {
-            this.Sounds["fart"].play();
+            this.Sounds[emoji].play();
         } else {
-            //var soundFile = sound.create("~/assets/fart.wav");
-            //soundFile.play();
+            var soundFile = sound.create("~/assets/" + emoji + ".wav");
+            soundFile.play();
         }
 
 
