@@ -23,7 +23,7 @@ import { HomeModule } from "./home/home.module";
     HomeModule
   ],
   declarations: [
-      AppComponent,
+      AppComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Page } from "ui/page";
+import * as application from "application";
+import {Page} from "ui/page";
+import * as app from "application";
 import { Photo } from "../models/photo.model";
 import { FirebaseService, UtilsService } from "../services";
 import * as enums from 'ui/enums';
@@ -8,11 +10,11 @@ import * as imageSource from 'image-source';
 import { isAndroid } from "platform";
 import { View } from "ui/core/view";
 import {TNSFancyAlert,TNSFancyAlertButton} from 'nativescript-fancyalert';
-
 //plugins
 import * as Toast from "nativescript-toast";
 import * as camera from "nativescript-camera";
 import * as fs from "file-system";
+//import * as sound from "nativescript-sound";
 
 var imageModule = require("ui/image");
 var img;
@@ -22,6 +24,7 @@ var img;
     selector: "e-home",
     templateUrl: "home.html"
 })
+
 export class HomeComponent implements OnInit {
 
     id: string;
@@ -32,6 +35,10 @@ export class HomeComponent implements OnInit {
     private uploadedImagePath: string;
 
     public photos$: Observable<any>;
+
+    public Sounds = {
+        //"fart": sound.create("~/assets/fart.wav")
+    };
 
     constructor(
         private firebaseService: FirebaseService,
@@ -84,6 +91,15 @@ export class HomeComponent implements OnInit {
     }
 
     vote(emoji:number,photo:Photo) {
+
+        if (app.android) {
+            this.Sounds["fart"].play();
+        } else {
+            //var soundFile = sound.create("~/assets/fart.wav");
+            //soundFile.play();
+        }
+
+
         this.firebaseService.vote(emoji,photo).then((result: any) => {
            Toast.makeText("Voted!").show();
         })

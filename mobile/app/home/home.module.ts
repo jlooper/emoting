@@ -11,7 +11,7 @@ import { HomeComponent } from "./home.component";
     homeRouting    
   ],
   declarations: [    
-    HomeComponent,
+    HomeComponent
   ]
 })
 export class HomeModule {}

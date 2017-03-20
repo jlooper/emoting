@@ -1,11 +1,26 @@
 @import 'nativescript-theme-core/css/purple.css';
 
+
+
 Button {
     background-color: limegreen;
     border-radius: 2;
     padding: 5;
     margin: 5;
 }
+
+ListView {
+    separator-color: transparent;
+}
+
+.container {
+  background-image: url("res://gradient");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: 15;
+}
+
 .card {
     background-color: limegreen;
     padding: 5;
