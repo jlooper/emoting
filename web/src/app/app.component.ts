@@ -9,7 +9,11 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class AppComponent {
   photos: FirebaseListObservable<any[]>;
   constructor (af: AngularFire){
-    this.photos = af.database.list('/Photos');
+    this.photos = af.database.list('/Photos',{
+      query:{
+        orderByChild: "date"
+      }
+    });
   }
 }
 
