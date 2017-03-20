@@ -9,6 +9,17 @@
   object-fit: cover;
 }
 
+.emote-buttons {
+  width: 98%;
+  margin: 0 auto;
+  padding: .25em;
+}
+
+
+button {
+  font-size: 1.5em;
+}
+
 [class*="row"] {
   justify-content: center;
 }
