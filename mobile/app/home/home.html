@@ -10,6 +10,7 @@
         <GridLayout class="container">
             <GridLayout class="card" rows="200,*" columns="*,*,*,*,*">
                 <Image colspan="5" row="0" col="0" [src]="item.path" stretch="aspectFill"></Image>
+                <!--<Button [@state]="isSelected" (tap)="vote(1,item)" class="btn btn1" row="1" col="0" text="💩"></Button>-->
                 <Button (tap)="vote(1,item)" class="btn btn1" row="1" col="0" text="💩"></Button>
                 <Button (tap)="vote(2,item)" class="btn btn2" row="1" col="1" text="😍"></Button>
                 <Button (tap)="vote(3,item)" class="btn btn3" row="1" col="2" text="😮"></Button>

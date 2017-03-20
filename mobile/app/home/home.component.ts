@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, trigger, style, animate, state, transition, keyframes, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as application from "application";
 import {Page} from "ui/page";
@@ -15,18 +15,28 @@ import * as Toast from "nativescript-toast";
 import * as camera from "nativescript-camera";
 import * as fs from "file-system";
 var sound = require("nativescript-sound");
-
 var imageModule = require("ui/image");
 var img;
+
 
 @Component({
     moduleId: module.id,
     selector: "e-home",
-    templateUrl: "home.html"
+    templateUrl: "home.html",
+    animations: [
+    trigger('state', [
+      state('active', style({ transform:'scale(1.5)' })),
+      state('inactive', style({ transform:'scale(1)' })),
+            transition('active => inactive', animate('100ms ease-in')),
+            transition('inactive => active', animate('100ms ease-out'))
+    ])
+  ]
 })
 
 export class HomeComponent implements OnInit {
 
+    isSelected:string;
+    toggle: boolean = true;
     id: string;
     imagepath: string;
     image: any;
@@ -52,7 +62,11 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         camera.requestPermissions();
         this.photos$ = <any>this.firebaseService.getPhotos();
+    }
 
+    toggleState() {
+        this.toggle = !this.toggle;
+        this.isSelected = this.toggle ? 'inactive':'active';
     }
 
     takePhoto() {
@@ -95,15 +109,13 @@ export class HomeComponent implements OnInit {
     }
 
     vote(emoji:number,photo:Photo) {
-
+        this.toggleState();
         if (app.android) {
             this.Sounds[emoji].play();
         } else {
             var soundFile = sound.create("~/assets/" + emoji + ".wav");
             soundFile.play();
         }
-
-
         this.firebaseService.vote(emoji,photo).then((result: any) => {
            Toast.makeText("Voted!").show();
         })
