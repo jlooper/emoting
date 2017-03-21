@@ -10,11 +10,11 @@
             type="column"
             spacing="2"
             [data]="[
-              photo.emoji1,
-              photo.emoji2,
-              photo.emoji3,
-              photo.emoji4,
-              photo.emoji5
+              { value: photo.emoji1, color: 'red' },
+              { value: photo.emoji2, color: 'orange' },
+              { value: photo.emoji3, color: 'yellow' },
+              { value: photo.emoji4, color: 'green' },
+              { value: photo.emoji5, color: 'blue' }
             ]" >
           </kendo-chart-series-item>
         </kendo-chart-series>
