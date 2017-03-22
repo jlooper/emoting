@@ -38,6 +38,8 @@ h1 {
   width: 30%;
   margin: 0.75rem 0;
   padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 1000px) {
@@ -76,19 +78,18 @@ h1 {
 }
 
 .emote-buttons {
-  margin: 0 auto;
+  align-self: flex-end;
+  width: 93%;
   display: flex;
-  justify-content: space-around;
-  width: 88%;
-  position: relative;
-  left: 0.7rem;
+  padding-right: 5px;
+  
 }
 button {
   border: none;
-  font-size: 2.5rem;
+  font-size: 35px;
   line-height: 2.5rem;
-  height: 3.5rem;
-  width: 3.5rem;
+  padding: 5px 0;
+  flex: 1 1 auto;
 }
 
 .💩 {
