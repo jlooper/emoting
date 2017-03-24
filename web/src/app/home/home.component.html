@@ -1,0 +1,31 @@
+<h1>EmotiNg: Tell us how you really feel!</h1>
+
+<div class="container">
+  <div *ngFor="let photo of photos | async" class="card">
+    <img class ="photo" src="{{ photo.path }}" alt="Emoting Photo">
+    <div class="chart-wrapper">
+      <kendo-chart style="height: 200px;">
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="column"
+            spacing="2"
+            [data]="[
+              { value: photo.emoji1, color: 'red' },
+              { value: photo.emoji2, color: 'orange' },
+              { value: photo.emoji3, color: 'yellow' },
+              { value: photo.emoji4, color: 'green' },
+              { value: photo.emoji5, color: 'blue' }
+            ]" >
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+    <div class="emote-buttons">
+      <button class="btn btn1 💩">💩</button>
+      <button class="btn btn2 😍">😍</button>
+      <button class="btn btn3 😮">😮</button>
+      <button class="btn btn4 😂">😂</button>
+      <button class="btn btn5 😐">😐</button>
+    </div>
+  </div>
+</div>

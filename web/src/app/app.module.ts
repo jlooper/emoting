@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartModule } from '@progress/kendo-angular-charts';
 import { AngularFireModule } from 'angularfire2';
 import 'hammerjs';
 
+import { AppRouting } from './app.routing';
+import { RainComponent } from './rain/rain.component';
+import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
+
 
 export const firebaseConfig = {
    apiKey: "AIzaSyCVe0RQwBocNDOpUfDQfZf6Kh1E0-zcZxI",
@@ -18,15 +22,19 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    RainComponent
   ],
   imports: [
     BrowserModule,
+    AppRouting,
     FormsModule,
     HttpModule,
     ChartModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [],
   bootstrap: [AppComponent]
 })
