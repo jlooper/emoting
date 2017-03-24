@@ -2,7 +2,12 @@
 
 <div class="container">
   <div *ngFor="let photo of photos | async" class="card">
+
     <img class ="photo" src="{{ photo.path }}" alt="Emoting Photo">
+    <span class="tally">
+      Votes:<br>
+      <b>{{ photo.emoji1 + photo.emoji2 + photo.emoji3 + photo.emoji4 + photo.emoji5 }}</b>
+      </span>
 
     <div class="chart-wrapper">
       <kendo-chart style="height: 200px;">

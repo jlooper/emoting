@@ -44,6 +44,7 @@ h1 {
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 @media (max-width: 1000px) {
@@ -76,6 +77,20 @@ h1 {
     max-height: 200px;
   }
 }
+
+.tally {
+  position: absolute;
+  color: white;
+  padding: 1rem;
+  top: 20px;
+  right: 20px;
+  text-align: center;
+  background-image: url('/assets/heart.svg');
+  background-size: 76px;
+  background-repeat: no-repeat;
+  transform: rotate(18deg);
+}
+
 
 .chart-wrapper {
   margin: 0.75rem 0;
