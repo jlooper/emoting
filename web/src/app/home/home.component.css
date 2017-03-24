@@ -12,7 +12,7 @@ h1 {
   z-index: 2;
 }
 @media (max-width: 600px) {
-  span { display: none; }
+  h1 span { display: none; }
 }
 
 .container {
