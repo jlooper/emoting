@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartModule } from '@progress/kendo-angular-charts';
 import { AngularFireModule } from 'angularfire2';
+
+// Comment this out before performing a `ng build --prod` to fix the graph scrolling problem
 import 'hammerjs';
 
 import { AppRouting } from './app.routing';
