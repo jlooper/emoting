@@ -11,6 +11,10 @@ h1 {
   width: 100%;
   z-index: 2;
 }
+@media (max-width: 600px) {
+  span { display: none; }
+}
+
 .container {
   background-image: url("~/assets/gradient.png");
   background-repeat: no-repeat;
