@@ -7,7 +7,6 @@ import { AngularFireModule } from 'angularfire2';
 import 'hammerjs';
 
 import { AppRouting } from './app.routing';
-import { RainComponent } from './rain/rain.component';
 import { HomeComponent } from './home/home.component';
 import { AppComponent } from './app.component';
 
@@ -23,8 +22,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    RainComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
