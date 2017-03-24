@@ -26,11 +26,11 @@ export class HomeComponent {
     this.votingRecord[photo.$key] = index;
     localStorage.setItem("votingRecord", JSON.stringify(this.votingRecord));
 
-    var updateObject = (index === 1) ? { emoji1: photo.emoji1++ } :
-      (index === 2) ? { emoji2: photo.emoji2++ } :
-      (index === 3) ? { emoji3: photo.emoji3++ } :
-      (index === 4) ? { emoji4: photo.emoji4++ } :
-      (index === 5) ? { emoji5: photo.emoji5++ } : {};
+    var updateObject = (index === 1) ? { emoji1: ++photo.emoji1 } :
+      (index === 2) ? { emoji2: ++photo.emoji2 } :
+      (index === 3) ? { emoji3: ++photo.emoji3 } :
+      (index === 4) ? { emoji4: ++photo.emoji4 } :
+      (index === 5) ? { emoji5: ++photo.emoji5 } : {};
 
     this.photos.update(photo.$key, updateObject);
   }
