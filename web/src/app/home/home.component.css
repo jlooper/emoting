@@ -91,19 +91,13 @@ button {
   padding: 5px 0;
   flex: 1 1 auto;
 }
+button:disabled {
+  opacity: 0.6;
+  background: lightgray;
+}
 
-.💩 {
-  background: red;
-}
-.😍 {
-  background: orange;
-}
-.😮 {
-  background: yellow;
-}
-.😂 {
-  background: green;
-}
-.😐 {
-  background: blue;
-}
+.💩, .💩.active:disabled { background: red; }
+.😍, .😍.active:disabled { background: orange; }
+.😮, .😮.active:disabled { background: yellow; }
+.😂, .😂.active:disabled { background: green; }
+.😐, .😐.active:disabled { background: blue; }
