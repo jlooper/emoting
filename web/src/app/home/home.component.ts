@@ -25,7 +25,6 @@ export class HomeComponent {
   vote(index, photo: Photo) {
     this.votingRecord[photo.$key] = index;
     localStorage.setItem("votingRecord", JSON.stringify(this.votingRecord));
-    console.log(this.votingRecord);
 
     var updateObject = (index === 1) ? { emoji1: photo.emoji1++ } :
       (index === 2) ? { emoji2: photo.emoji2++ } :
