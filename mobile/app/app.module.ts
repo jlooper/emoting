@@ -2,6 +2,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NgModule } from "@angular/core";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { NativeScriptAnimationsModule } from "nativescript-angular/animations";
 import { AppRoutingModule } from "./app.routes";
 
 import { AppComponent } from "./app.component";
@@ -23,7 +24,8 @@ registerElement("LottieView", () => require("nativescript-lottie").LottieView);
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptHttpModule,
-    NativeScriptRouterModule
+    NativeScriptRouterModule,
+    NativeScriptAnimationsModule
   ],
   declarations: [
       AppComponent,

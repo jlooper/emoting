@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { trigger, state, transition, animate, style, keyframes } from '@angular/animations';
 import { Observable } from 'rxjs/Observable';
 import * as application from "application";
 import {Page} from "ui/page";
@@ -9,6 +10,7 @@ import * as enums from 'ui/enums';
 import * as imageSource from 'image-source';
 import { isAndroid } from "platform";
 import { View } from "ui/core/view";
+import { Button } from "ui/button";
 import {TNSFancyAlert,TNSFancyAlertButton} from 'nativescript-fancyalert';
 //plugins
 import * as Toast from "nativescript-toast";
@@ -21,7 +23,19 @@ var img;
 @Component({
     moduleId: module.id,
     selector: "e-home",
-    templateUrl: "home.html"
+    templateUrl: "home.html",
+    animations: [
+        trigger("state", [
+            state('active', style({ backgroundColor: '#911E25' })),
+            /*transition("inactive => active", [
+                animate(1000, keyframes([
+                    style({ transform: 'scale(1, 1)' }),
+                    style({ transform: 'scale(2, 2)' }),
+                    style({ transform: 'scale(1, 1)' }),
+                ]))
+            ]),*/
+        ])
+    ]
 })
 
 export class HomeComponent implements OnInit {
@@ -34,7 +48,7 @@ export class HomeComponent implements OnInit {
     private imagePath: string;
     private uploadedImageName: string;
     private uploadedImagePath: string;
-
+    public current: boolean;
     public photos$: Observable<any>;
 
     public Sounds = {
@@ -46,19 +60,20 @@ export class HomeComponent implements OnInit {
     };
 
     constructor(
+        
         private firebaseService: FirebaseService,
-        private utilsService: UtilsService
-    ) {}
+        private utilsService: UtilsService,
+        
+    ) {
+        this.current = false;
+      }
 
     ngOnInit() {
         camera.requestPermissions();
         this.photos$ = <any>this.firebaseService.getPhotos();
     }
 
-    /*toggleState() {
-        this.toggle = !this.toggle;
-        this.isSelected = this.toggle ? 'inactive':'active';
-    }*/
+    
 
     takePhoto() {
         let options = {
@@ -99,8 +114,13 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    vote(emoji:number,photo:Photo) {
-        //this.toggleState();
+    vote(event:Button,emoji:number,photo:Photo) {
+        let button = event.id.slice(0,4);
+        let itemid = event.id.slice(4);
+        console.log(button,itemid,photo.id)
+        if (button == 'btn1' && itemid == photo.id){
+            this.current = !this.current;
+        }
         if (app.android) {
             this.Sounds[emoji].play();
         } else {

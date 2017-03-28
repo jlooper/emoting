@@ -1,5 +1,5 @@
 @import 'nativescript-theme-core/css/purple.css';
-
+@import 'platform.css';
 
 
 Button {
