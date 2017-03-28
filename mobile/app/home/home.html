@@ -6,23 +6,22 @@
 
 <ScrollView>
     <ListView [items]="photos$ | async" class="list-group">
-        <template let-item="item">
-        <GridLayout class="container">
-            
-            
-            <GridLayout class="card" rows="200,*" columns="*,*,*,*,*">
-                <Image colspan="5" row="0" col="0" [src]="item.path" stretch="aspectFill"></Image>
-                <Button (tap)="vote(1,item)" class="btn btn1" row="1" col="0" text="💩"></Button>
-                <Button (tap)="vote(2,item)" class="btn btn2" row="1" col="1" text="😍"></Button>
-                <Button (tap)="vote(3,item)" class="btn btn3" row="1" col="2" text="😮"></Button>
-                <Button (tap)="vote(4,item)" class="btn btn4" row="1" col="3" text="😂"></Button>
-                <Button (tap)="vote(5,item)" class="btn btn5" row="1" col="4" text="😐"></Button>
+        <ng-template let-item="item">
+
+            <GridLayout class="container">
+                <GridLayout class="card" rows="200,*" columns="*,*,*,*,*">
+                    <Image colspan="5" row="0" col="0" [src]="item.path" stretch="aspectFill"></Image>
+                    <Button (tap)="vote(1,item)" class="btn btn1" row="1" col="0" text="💩"></Button>
+                    <Button (tap)="vote(2,item)" class="btn btn2" row="1" col="1" text="😍"></Button>
+                    <Button (tap)="vote(3,item)" class="btn btn3" row="1" col="2" text="😮"></Button>
+                    <Button (tap)="vote(4,item)" class="btn btn4" row="1" col="3" text="😂"></Button>
+                    <Button (tap)="vote(5,item)" class="btn btn5" row="1" col="4" text="😐"></Button>
+                </GridLayout>
+
+                <Label class="tally" horizontalAlignment="right" verticalAlignment="top" [text]="item.emoji1+item.emoji2+item.emoji3+item.emoji4+item.emoji5"></Label>
+                <Label text="❤️" style="font-size: 70" horizontalAlignment="right" verticalAlignment="top"></Label>
+
             </GridLayout>
-
-            <Label class="tally" horizontalAlignment="right" verticalAlignment="top" [text]="item.emoji1+item.emoji2+item.emoji3+item.emoji4+item.emoji5"></Label>
-            <Label text="❤️" style="font-size: 70" horizontalAlignment="right" verticalAlignment="top"></Label>
-
-        </GridLayout>
-        </template>
+        </ng-template>
     </ListView>
 </ScrollView>

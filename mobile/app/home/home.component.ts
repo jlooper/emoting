@@ -1,4 +1,4 @@
-import { Component, trigger, style, animate, state, transition, keyframes, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as application from "application";
 import {Page} from "ui/page";
@@ -18,19 +18,10 @@ var sound = require("nativescript-sound");
 var imageModule = require("ui/image");
 var img;
 
-
 @Component({
     moduleId: module.id,
     selector: "e-home",
-    templateUrl: "home.html",
-    animations: [
-    trigger('state', [
-      state('active', style({ transform:'scale(1.5)' })),
-      state('inactive', style({ transform:'scale(1)' })),
-            transition('active => inactive', animate('100ms ease-in')),
-            transition('inactive => active', animate('100ms ease-out'))
-    ])
-  ]
+    templateUrl: "home.html"
 })
 
 export class HomeComponent implements OnInit {
@@ -64,10 +55,10 @@ export class HomeComponent implements OnInit {
         this.photos$ = <any>this.firebaseService.getPhotos();
     }
 
-    toggleState() {
+    /*toggleState() {
         this.toggle = !this.toggle;
         this.isSelected = this.toggle ? 'inactive':'active';
-    }
+    }*/
 
     takePhoto() {
         let options = {

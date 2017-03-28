@@ -1,14 +1,18 @@
-import { NativeScriptModule } from "nativescript-angular/platform";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NgModule } from "@angular/core";
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
+import { AppRoutingModule } from "./app.routes";
 
-import { appRoutes } from "./app.routes";
 import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home/home.component";
+
 import { FirebaseService } from "./services/firebase.service";
 import { UtilsService } from "./services/utils.service";
 
-import { HomeModule } from "./home/home.module";
+import {registerElement} from 'nativescript-angular/element-registry';
+registerElement("LottieView", () => require("nativescript-lottie").LottieView);
+
 
 @NgModule({
   providers: [
@@ -17,13 +21,13 @@ import { HomeModule } from "./home/home.module";
   ],
   imports: [
     NativeScriptModule,
+    AppRoutingModule,
     NativeScriptHttpModule,
-    NativeScriptRouterModule,
-    NativeScriptRouterModule.forRoot(appRoutes),
-    HomeModule
+    NativeScriptRouterModule
   ],
   declarations: [
-      AppComponent
+      AppComponent,
+      HomeComponent
   ],
   bootstrap: [AppComponent]
 })
