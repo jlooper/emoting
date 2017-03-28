@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
     }
 
     vote(emoji:number,photo:Photo) {
-        this.toggleState();
+        //this.toggleState();
         if (app.android) {
             this.Sounds[emoji].play();
         } else {
