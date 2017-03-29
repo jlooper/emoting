@@ -4,8 +4,7 @@ import { AppModule } from "./app.module";
 import firebase = require("nativescript-plugin-firebase");
 
  firebase.init({
-   //take me offline!
-   persist: true,
+   persist: false,
    storageBucket: 'gs://emoting-b4d9a.appspot.com'
   
  }).then(

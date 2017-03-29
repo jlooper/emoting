@@ -32,7 +32,10 @@ export class FirebaseService {
       onProgress: function (status) {
         console.log("Uploaded fraction: " + status.fractionCompleted);
         console.log("Percentage complete: " + status.percentageCompleted);
-        //this.loader.hide();
+        /*if (status.percentageCompleted > 90){
+          this.loader.hide();
+        }*/
+        
       }
     });
   }
@@ -65,7 +68,7 @@ export class FirebaseService {
 
   vote(emoji:number,photo:Photo) {
     //which emoji do we upate?
-    this.publishUpdates();
+    //this.publishUpdates();
     switch (emoji) 
     
     { 
