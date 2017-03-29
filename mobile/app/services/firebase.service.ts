@@ -23,7 +23,7 @@ export class FirebaseService {
   private _allPhotos: Array<Photo> = [];
 
   public uploadFile(localPath: string, file?: any): Promise<any> {
-    this.loader.show({message:"Uploading..."});
+    //this.loader.show({message:"Uploading..."});
     let filename = this.utils.getFilename(localPath);
     let remotePath = `${filename}`;
     return firebase.uploadFile({
@@ -32,6 +32,7 @@ export class FirebaseService {
       onProgress: function (status) {
         console.log("Uploaded fraction: " + status.fractionCompleted);
         console.log("Percentage complete: " + status.percentageCompleted);
+        //this.loader.hide();
       }
     });
   }
