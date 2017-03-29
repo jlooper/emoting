@@ -4,8 +4,8 @@
     </ActionItem>
 </ActionBar>
 
-<ScrollView>
-    <ListView [items]="photos$ | async" class="list-group">
+<ScrollView>    
+    <ListView [items]="photos$ | async" class="list-group">       
         <ng-template let-item="item">
 
             <GridLayout class="container">
@@ -17,12 +17,10 @@
                     <Button (tap)="vote(4,item)" class="btn btn4" row="1" col="3" text="😂"></Button>
                     <Button (tap)="vote(5,item)" class="btn btn5" row="1" col="4" text="😐"></Button>
                 </GridLayout>
-
                 <StackLayout class="tallycontainer" backgroundImage="~/assets/heart" verticalAlignment="top" horizontalAlignment="right">
                     <Label class="tally" text="Votes:"></Label>
                     <Label class="tally" textWrap="true" [text]="item.emoji1+item.emoji2+item.emoji3+item.emoji4+item.emoji5"></Label>
                 </StackLayout>
-
             </GridLayout>
         </ng-template>
     </ListView>

@@ -5,13 +5,10 @@ import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/share';
 import { UtilsService } from './utils.service';
-import { LoadingIndicator } from 'nativescript-loading-indicator';
 import {TNSFancyAlert,TNSFancyAlertButton} from 'nativescript-fancyalert';
 
 @Injectable()
 export class FirebaseService {
-
-
 
   constructor(
     private ngZone: NgZone,
@@ -19,23 +16,17 @@ export class FirebaseService {
   ) {}
 
   photos: BehaviorSubject<Array<Photo>> = new BehaviorSubject([]);
-  loader = new LoadingIndicator();
   private _allPhotos: Array<Photo> = [];
 
   public uploadFile(localPath: string, file?: any): Promise<any> {
-    //this.loader.show({message:"Uploading..."});
     let filename = this.utils.getFilename(localPath);
     let remotePath = `${filename}`;
     return firebase.uploadFile({
       remoteFullPath: remotePath,
       localFullPath: localPath,
       onProgress: function (status) {
-        console.log("Uploaded fraction: " + status.fractionCompleted);
+        //console.log("Uploaded fraction: " + status.fractionCompleted);
         console.log("Percentage complete: " + status.percentageCompleted);
-        /*if (status.percentageCompleted > 90){
-          this.loader.hide();
-        }*/
-        
       }
     });
   }

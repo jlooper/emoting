@@ -10,6 +10,7 @@ import * as imageSource from 'image-source';
 import { isAndroid } from "platform";
 import { View } from "ui/core/view";
 import {TNSFancyAlert,TNSFancyAlertButton} from 'nativescript-fancyalert';
+import { LoadingIndicator } from 'nativescript-loading-indicator';
 //plugins
 import * as Toast from "nativescript-toast";
 import * as camera from "nativescript-camera";
@@ -45,6 +46,8 @@ export class HomeComponent implements OnInit {
         "5": sound.create("~/assets/5.wav")
     };
 
+    loader = new LoadingIndicator();
+
     constructor(
         private firebaseService: FirebaseService,
         private utilsService: UtilsService
@@ -54,11 +57,6 @@ export class HomeComponent implements OnInit {
         camera.requestPermissions();
         this.photos$ = <any>this.firebaseService.getPhotos();
     }
-
-    /*toggleState() {
-        this.toggle = !this.toggle;
-        this.isSelected = this.toggle ? 'inactive':'active';
-    }*/
 
     takePhoto() {
         let options = {
@@ -80,6 +78,7 @@ export class HomeComponent implements OnInit {
     }
 
     saveToFile(res) {
+        this.loader.show({ message: 'Uploading your photo...' });
         let imgsrc = res;
         this.imagePath = this.utilsService.documentsPath(`photo-${Date.now()}.png`);
         imgsrc.saveToFile(this.imagePath, enums.ImageFormat.png);
@@ -89,12 +88,15 @@ export class HomeComponent implements OnInit {
             //get downloadURL and store it as a full path;
             this.firebaseService.getDownloadUrl(this.uploadedImageName).then((downloadUrl: string) => {
                 this.firebaseService.createPhoto(downloadUrl).then((result: any) => {
+                    this.loader.hide();
                     TNSFancyAlert.showSuccess('Success!', result, 'OK!');    
                 }, (error: any) => {
+                    this.loader.hide();
                     TNSFancyAlert.showError('Oops!', error, 'OK!');    
                 });
             })
         }, (error: any) => {
+            this.loader.hide();
             TNSFancyAlert.showError('Oops!', error, 'OK!');
         });
     }
