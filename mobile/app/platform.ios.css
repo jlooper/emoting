@@ -1,0 +1,13 @@
+/*tally*/
+.tallycontainer{
+    width: 75;
+    height: 75;
+    padding-top: 15;
+    margin: 5;
+    transform: rotate(18deg);
+}
+.tally {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}

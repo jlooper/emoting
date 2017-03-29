@@ -18,8 +18,10 @@
                     <Button (tap)="vote(5,item)" class="btn btn5" row="1" col="4" text="😐"></Button>
                 </GridLayout>
 
-                <Label class="tally" horizontalAlignment="right" verticalAlignment="top" [text]="item.emoji1+item.emoji2+item.emoji3+item.emoji4+item.emoji5"></Label>
-                <Label text="❤️" style="font-size: 70" horizontalAlignment="right" verticalAlignment="top"></Label>
+                <StackLayout class="tallycontainer" backgroundImage="~/assets/heart" verticalAlignment="top" horizontalAlignment="right">
+                    <Label class="tally" text="Votes:"></Label>
+                    <Label class="tally" textWrap="true" [text]="item.emoji1+item.emoji2+item.emoji3+item.emoji4+item.emoji5"></Label>
+                </StackLayout>
 
             </GridLayout>
         </ng-template>

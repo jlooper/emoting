@@ -1,5 +1,5 @@
 @import 'nativescript-theme-core/css/purple.css';
-
+@import 'platform.css';
 
 
 Button {
@@ -46,13 +46,4 @@ ListView {
 }
 .btn5 {
     background-color: blue;
-}
-
-/*tally*/
-.tally {
-    color: white;
-    font-size: 30;
-    z-index: 1;
-    padding-top: 20;
-    padding-right: 20;
 }
