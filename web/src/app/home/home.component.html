@@ -1,6 +1,8 @@
 <h1>EmotiNg<span>: Tell us how you really feel!</span></h1>
 
 <div class="container">
+  <p>This app was used for a live demo at ng-conf 2017. You can <a href="https://www.youtube.com/watch?v=j2S5OrMUj9g">view the presentation on YouTube</a>.
+
   <div *ngFor="let photo of photos | async" class="card">
 
     <img class ="photo" src="{{ photo.path }}" alt="Emoting Photo">
